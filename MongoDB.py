@@ -1,5 +1,5 @@
-from pyspark.sql import SparkSession
 from pyspark.sql import Row
+from pyspark.sql import SparkSession
 from pyspark.sql import functions
 
 
@@ -13,7 +13,7 @@ if __name__ == "__main__":
     spark = SparkSession.builder.appName("MongoDBIntegration").getOrCreate()
 
     # Get the raw data
-    lines = spark.sparkContext.textFile("hdff:///user/maria_dev/ml-100k/u.user")
+    lines = spark.sparkContext.textFile("hdfs:///user/maria_dev/ml-100k/u.user")
 
     # Convert it to a RDD of Row objects with (userID, age, gender, occupation, zip)
     users = lines.map(parseInput)
